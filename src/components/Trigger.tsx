@@ -3,23 +3,25 @@ import {nanoid} from "nanoid";
 export default function Trigger({
     isChecked = false,
     runCustomTriggerFuc,
+    id = "",
 }: {
     isChecked: boolean;
     runCustomTriggerFuc: CallableFunction;
+    id?: string;
 }) {
-    const generatedId = nanoid();
+    const $id = id ? id : nanoid();
     return (
         <>
             <input
                 type="checkbox"
                 role="checkbox"
-                id={generatedId}
+                id={$id}
                 aria-label="trigger checkbox"
                 onChange={(e) => runCustomTriggerFuc(e)}
                 className="hidden"
             />
             <label
-                htmlFor={generatedId}
+                htmlFor={$id}
                 className=" flex justify-center items-center cursor-pointer"
             >
                 <div
